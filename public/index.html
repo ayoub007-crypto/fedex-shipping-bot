@@ -2,9 +2,10 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>FedEx Shipping | Order to Telegram Bot</title>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+  <title>FedEx Express | Smart Shipping Portal</title>
+  <!-- Google Fonts & Font Awesome -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
   <style>
     * {
@@ -15,98 +16,147 @@
 
     body {
       font-family: 'Inter', sans-serif;
-      background: #f4f6f9;
-      color: #1a1a2e;
+      background: #f2f5f9;
+      color: #1E293B;
+      line-height: 1.5;
     }
 
-    .header {
-      background: #660099;
+    /* FedEx inspired palette */
+    :root {
+      --fedex-purple: #660099;
+      --fedex-orange: #FF5C00;
+      --fedex-navy: #1E2A5E;
+      --gray-light: #F8FAFE;
+      --border-light: #E2E8F0;
+    }
+
+    /* Header */
+    .main-header {
+      background: var(--fedex-purple);
       color: white;
-      padding: 20px 40px;
+      padding: 1rem 2rem;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+    }
+
+    .header-container {
+      max-width: 1280px;
+      margin: 0 auto;
       display: flex;
+      flex-wrap: wrap;
       justify-content: space-between;
       align-items: center;
-      flex-wrap: wrap;
-      gap: 15px;
+      gap: 1rem;
     }
 
     .logo {
-      font-size: 28px;
-      font-weight: 700;
+      display: flex;
+      align-items: baseline;
+      gap: 4px;
+      font-size: 1.8rem;
+      font-weight: 800;
     }
 
-    .logo span:first-child {
-      background: #ff6600;
-      padding: 5px 12px;
-      border-radius: 8px;
+    .logo-purple {
+      background: white;
+      color: var(--fedex-purple);
+      padding: 0.2rem 0.6rem;
+      border-radius: 10px;
     }
 
-    .nav a {
+    .logo-orange {
+      color: var(--fedex-orange);
+    }
+
+    .nav-menu a {
       color: white;
       text-decoration: none;
-      margin-left: 25px;
+      margin-left: 2rem;
       font-weight: 500;
+      font-size: 0.95rem;
+      transition: 0.2s;
+      border-bottom: 2px solid transparent;
+      padding-bottom: 4px;
     }
 
-    .nav a:hover { color: #ff6600; }
-
-    .container {
-      max-width: 1200px;
-      margin: 30px auto;
-      padding: 0 20px;
+    .nav-menu a:hover {
+      border-bottom-color: var(--fedex-orange);
     }
 
-    .hero {
+    /* Main container */
+    .main-container {
+      max-width: 1280px;
+      margin: 2rem auto;
+      padding: 0 1.5rem;
+    }
+
+    /* Hero */
+    .hero-section {
       background: white;
-      padding: 30px;
-      border-radius: 20px;
-      margin-bottom: 30px;
-      box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+      border-radius: 2rem;
+      padding: 2rem;
+      margin-bottom: 2rem;
+      box-shadow: 0 6px 14px rgba(0,0,0,0.02);
+      border: 1px solid var(--border-light);
     }
 
-    .hero h1 {
-      font-size: 32px;
-      margin-bottom: 10px;
+    .hero-section h1 {
+      font-size: 2rem;
+      font-weight: 700;
+      background: linear-gradient(135deg, var(--fedex-purple), var(--fedex-navy));
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
     }
 
-    .hero h1 i { color: #ff6600; }
-
-    .hero p {
-      color: #555;
-      margin-top: 10px;
+    .hero-section p {
+      color: #475569;
+      margin-top: 0.5rem;
     }
 
-    .two-columns {
+    /* Two columns layout */
+    .dashboard {
       display: flex;
-      gap: 30px;
       flex-wrap: wrap;
+      gap: 2rem;
     }
 
+    /* Form Card */
     .form-card {
       flex: 2;
+      min-width: 280px;
       background: white;
-      border-radius: 20px;
-      box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+      border-radius: 2rem;
+      border: 1px solid var(--border-light);
       overflow: hidden;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.02);
+      transition: all 0.2s;
     }
 
-    .card-title {
-      background: #f8f9fa;
-      padding: 20px 25px;
-      border-bottom: 1px solid #e0e0e0;
-      font-size: 20px;
+    .card-header {
+      background: var(--gray-light);
+      padding: 1.2rem 1.8rem;
+      border-bottom: 1px solid var(--border-light);
+    }
+
+    .card-header h2 {
+      font-size: 1.4rem;
       font-weight: 600;
-      color: #660099;
+      color: var(--fedex-purple);
+      display: flex;
+      align-items: center;
+      gap: 10px;
     }
 
-    .card-title i { color: #ff6600; margin-right: 10px; }
+    .card-header h2 i {
+      color: var(--fedex-orange);
+    }
 
     .form-body {
-      padding: 25px;
+      padding: 1.8rem;
     }
 
     .form-group {
-      margin-bottom: 20px;
+      margin-bottom: 1.4rem;
     }
 
     label {
@@ -114,564 +164,540 @@
       align-items: center;
       gap: 8px;
       font-weight: 600;
-      margin-bottom: 8px;
-      color: #333;
-      font-size: 14px;
+      margin-bottom: 0.5rem;
+      font-size: 0.85rem;
+      color: #1e293b;
     }
 
-    label i { color: #ff6600; width: 18px; }
+    label i {
+      color: var(--fedex-orange);
+      width: 18px;
+    }
 
     input, select, textarea {
       width: 100%;
-      padding: 12px 15px;
-      border: 1.5px solid #ddd;
-      border-radius: 12px;
+      padding: 0.8rem 1rem;
+      border: 1.5px solid var(--border-light);
+      border-radius: 1rem;
       font-family: 'Inter', sans-serif;
-      font-size: 14px;
+      font-size: 0.9rem;
+      transition: 0.2s;
+      background: white;
     }
 
     input:focus, select:focus, textarea:focus {
       outline: none;
-      border-color: #660099;
+      border-color: var(--fedex-purple);
       box-shadow: 0 0 0 3px rgba(102,0,153,0.1);
     }
 
-    .row-2 {
+    .row-2cols {
       display: flex;
-      gap: 15px;
+      gap: 1rem;
       flex-wrap: wrap;
     }
 
-    .row-2 .form-group { flex: 1; }
+    .row-2cols .form-group {
+      flex: 1;
+    }
 
-    .package-box {
-      background: #fff9f0;
-      padding: 15px 20px;
-      border-radius: 15px;
-      margin: 15px 0;
-      border-left: 4px solid #ff6600;
+    .package-highlight {
+      background: #FFFAF0;
+      padding: 1rem 1.5rem;
+      border-radius: 1.2rem;
+      margin: 1rem 0;
+      border-left: 5px solid var(--fedex-orange);
     }
 
     .radio-group {
       display: flex;
-      gap: 20px;
+      gap: 1.8rem;
       flex-wrap: wrap;
-      margin-top: 10px;
+      margin-top: 0.5rem;
     }
 
     .radio-group label {
-      font-weight: normal;
-      cursor: pointer;
+      font-weight: 500;
+      gap: 6px;
     }
 
     input[type="radio"], input[type="checkbox"] {
       width: auto;
-      margin-right: 5px;
-      accent-color: #660099;
+      margin-right: 4px;
+      accent-color: var(--fedex-purple);
     }
 
-    .checkbox-group {
+    .checkbox-line {
       display: flex;
       align-items: center;
-      gap: 10px;
-      margin: 15px 0;
+      gap: 12px;
+      margin: 1rem 0;
     }
 
-    .checkbox-group label { margin-bottom: 0; }
+    .checkbox-line label {
+      margin-bottom: 0;
+    }
 
-    .submit-btn {
-      background: linear-gradient(135deg, #660099, #8b1ab8);
+    .btn-primary {
+      background: linear-gradient(100deg, var(--fedex-purple), #8810c2);
       color: white;
       border: none;
-      padding: 14px;
-      font-size: 16px;
-      font-weight: 700;
-      border-radius: 40px;
-      cursor: pointer;
       width: 100%;
-      margin-top: 20px;
+      padding: 1rem;
+      font-weight: 700;
+      font-size: 1rem;
+      border-radius: 3rem;
+      cursor: pointer;
+      margin-top: 1.5rem;
       display: flex;
       align-items: center;
       justify-content: center;
       gap: 10px;
+      transition: transform 0.2s, box-shadow 0.2s;
     }
 
-    .submit-btn:hover {
+    .btn-primary:hover {
       transform: translateY(-2px);
-      box-shadow: 0 5px 15px rgba(102,0,153,0.3);
+      box-shadow: 0 12px 20px rgba(102,0,153,0.3);
     }
 
-    .submit-btn:disabled {
-      opacity: 0.7;
-      cursor: not-allowed;
+    /* Sidebar */
+    .info-sidebar {
+      flex: 1.2;
+      min-width: 260px;
     }
 
-    .sidebar {
-      flex: 1;
-      min-width: 280px;
-    }
-
-    .info-card {
+    .info-widget {
       background: white;
-      border-radius: 20px;
-      padding: 20px;
-      margin-bottom: 20px;
-      box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+      border-radius: 1.8rem;
+      border: 1px solid var(--border-light);
+      padding: 1.5rem;
+      margin-bottom: 1.8rem;
     }
 
-    .info-card h3 {
-      font-size: 18px;
-      margin-bottom: 15px;
+    .info-widget h3 {
+      font-size: 1.2rem;
+      font-weight: 700;
+      border-left: 4px solid var(--fedex-orange);
       padding-left: 12px;
-      border-left: 4px solid #ff6600;
+      margin-bottom: 1rem;
     }
 
-    .rate {
-      font-size: 36px;
+    .price-big {
+      font-size: 2rem;
       font-weight: 800;
-      color: #660099;
-      margin: 10px 0;
+      color: var(--fedex-purple);
+      margin: 0.5rem 0;
     }
 
-    .info-list {
+    .feature-list {
       list-style: none;
-      margin-top: 10px;
     }
 
-    .info-list li {
-      margin-bottom: 10px;
+    .feature-list li {
+      margin-bottom: 0.8rem;
       display: flex;
       align-items: center;
-      gap: 8px;
-      font-size: 14px;
+      gap: 10px;
+      font-size: 0.85rem;
     }
 
-    .info-list i {
-      color: #ff6600;
-      width: 20px;
+    .feature-list i {
+      color: var(--fedex-orange);
+      width: 22px;
     }
 
-    .footer {
-      background: #0f172a;
-      color: #94a3b8;
-      margin-top: 50px;
-      padding: 40px 40px 20px;
+    /* Footer */
+    .main-footer {
+      background: #0F172A;
+      color: #CBD5E1;
+      margin-top: 3rem;
+      padding: 2.5rem 1.5rem 1.5rem;
     }
 
-    .footer-content {
-      max-width: 1200px;
+    .footer-grid {
+      max-width: 1280px;
       margin: 0 auto;
       display: flex;
       flex-wrap: wrap;
       justify-content: space-between;
-      gap: 30px;
+      gap: 2rem;
     }
 
     .footer-col h4 {
       color: white;
-      margin-bottom: 15px;
+      margin-bottom: 1rem;
+      font-weight: 600;
     }
 
     .footer-col p, .footer-col a {
-      color: #94a3b8;
+      color: #94A3B8;
       text-decoration: none;
-      font-size: 13px;
-      line-height: 1.8;
+      font-size: 0.8rem;
+      line-height: 1.6;
+    }
+
+    .footer-col a:hover {
+      color: var(--fedex-orange);
     }
 
     .copyright {
       text-align: center;
-      padding-top: 30px;
-      margin-top: 30px;
-      border-top: 1px solid #1e293b;
-      font-size: 12px;
+      padding-top: 2rem;
+      margin-top: 2rem;
+      border-top: 1px solid #1E293B;
+      font-size: 0.7rem;
     }
 
-    .toast {
+    /* Toast message */
+    .toast-notify {
       position: fixed;
-      bottom: 30px;
-      right: 30px;
-      background: #1f2937;
+      bottom: 25px;
+      right: 25px;
+      background: #1E293B;
       color: white;
       padding: 12px 20px;
-      border-radius: 50px;
+      border-radius: 40px;
       display: flex;
       align-items: center;
       gap: 10px;
       z-index: 1000;
-      animation: slideIn 0.3s ease;
+      font-weight: 500;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+      animation: fadeSlide 0.3s ease;
     }
 
-    @keyframes slideIn {
-      from { transform: translateX(100%); opacity: 0; }
-      to { transform: translateX(0); opacity: 1; }
+    @keyframes fadeSlide {
+      from { opacity: 0; transform: translateX(40px); }
+      to { opacity: 1; transform: translateX(0); }
     }
 
-    @media (max-width: 768px) {
-      .header { flex-direction: column; text-align: center; }
-      .nav a { margin: 0 10px; }
-      .hero h1 { font-size: 24px; }
+    @media (max-width: 780px) {
+      .nav-menu a { margin-left: 1rem; }
+      .hero-section h1 { font-size: 1.6rem; }
     }
   </style>
 </head>
 <body>
 
-<div class="header">
-  <div class="logo">
-    <span>Fed</span><span>Ex</span>
+<!-- HEADER with navigation -->
+<header class="main-header">
+  <div class="header-container">
+    <div class="logo">
+      <span class="logo-purple">Fed</span>
+      <span class="logo-orange">Ex</span>
+      <span style="font-size: 0.9rem; font-weight: 400; margin-left: 5px;">Logistics</span>
+    </div>
+    <div class="nav-menu">
+      <a href="#">Ship</a>
+      <a href="#">Track</a>
+      <a href="#">Support</a>
+      <a href="#">Business</a>
+      <a href="#">Locations</a>
+    </div>
   </div>
-  <div class="nav">
-    <a href="#">Shipping</a>
-    <a href="#">Tracking</a>
-    <a href="#">Support</a>
-    <a href="#">Business</a>
-  </div>
-</div>
+</header>
 
-<div class="container">
-  <div class="hero">
-    <h1><i class="fas fa-paper-plane"></i> Smart Shipping to Telegram</h1>
-    <p>Fill your order details — instantly forwarded as a text message to your Telegram bot. No files, pure live text orders.</p>
-    <p style="margin-top: 10px; font-size: 14px;"><i class="fas fa-robot" style="color:#ff6600;"></i> Bot will receive: sender, receiver, package info, special notes + rates</p>
+<main class="main-container">
+  <!-- Hero Section with labels and headers -->
+  <div class="hero-section">
+    <h1><i class="fas fa-shipping-fast" style="color: #FF5C00;"></i> Express shipping simplified</h1>
+    <p>Fill out the form below to generate a professional shipment order. All fields are clearly labeled.</p>
+    <div style="display: flex; gap: 16px; margin-top: 16px; flex-wrap: wrap;">
+      <span style="background: #F1F5F9; padding: 4px 12px; border-radius: 30px;"><i class="fas fa-tag"></i> Real-time rates</span>
+      <span style="background: #F1F5F9; padding: 4px 12px; border-radius: 30px;"><i class="fas fa-clock"></i> Priority & ground</span>
+      <span style="background: #F1F5F9; padding: 4px 12px; border-radius: 30px;"><i class="fas fa-globe"></i> 220+ countries</span>
+    </div>
   </div>
 
-  <div class="two-columns">
+  <!-- Main FORM + inputs, labels, select, textarea, radio, checkbox -->
+  <div class="dashboard">
     <div class="form-card">
-      <div class="card-title">
-        <i class="fas fa-box-open"></i> Create Shipment Order
+      <div class="card-header">
+        <h2><i class="fas fa-file-signature"></i> Shipment details</h2>
       </div>
       <div class="form-body">
-        <form id="orderForm">
+        <form id="fedexOrderForm">
+          <!-- Shipper section -->
           <div class="form-group">
-            <label><i class="fas fa-user"></i> Full Name (Sender)</label>
-            <input type="text" id="fullName" placeholder="John Doe" required>
+            <label for="senderName"><i class="fas fa-user-circle"></i> Sender full name *</label>
+            <input type="text" id="senderName" name="senderName" placeholder="Dr. Emily Clarke" required>
           </div>
-
-          <div class="row-2">
+          <div class="row-2cols">
             <div class="form-group">
-              <label><i class="fas fa-envelope"></i> Email</label>
-              <input type="email" id="email" placeholder="john@example.com" required>
+              <label for="senderEmail"><i class="fas fa-envelope"></i> Email address *</label>
+              <input type="email" id="senderEmail" name="senderEmail" placeholder="emily@logistics.com" required>
             </div>
             <div class="form-group">
-              <label><i class="fas fa-phone"></i> Phone</label>
-              <input type="tel" id="phone" placeholder="+1 234 567 8900">
-            </div>
-          </div>
-
-          <div class="form-group">
-            <label><i class="fas fa-location-dot"></i> Pickup Address</label>
-            <input type="text" id="address" placeholder="123 Main St, City, ZIP" required>
-          </div>
-
-          <div class="row-2">
-            <div class="form-group">
-              <label><i class="fas fa-city"></i> City</label>
-              <input type="text" id="city" placeholder="New York">
-            </div>
-            <div class="form-group">
-              <label><i class="fas fa-mail-bulk"></i> ZIP Code</label>
-              <input type="text" id="zip" placeholder="10001">
+              <label for="senderPhone"><i class="fas fa-phone-alt"></i> Phone number</label>
+              <input type="tel" id="senderPhone" name="senderPhone" placeholder="+1 987 654 3210">
             </div>
           </div>
 
           <div class="form-group">
-            <label><i class="fas fa-user-check"></i> Receiver Name</label>
-            <input type="text" id="receiverName" placeholder="Jane Smith" required>
+            <label for="originAddress"><i class="fas fa-location-dot"></i> Pickup address *</label>
+            <input type="text" id="originAddress" name="originAddress" placeholder="123 Logistics Ave, Suite 400" required>
+          </div>
+          <div class="row-2cols">
+            <div class="form-group">
+              <label for="originCity"><i class="fas fa-building"></i> City</label>
+              <input type="text" id="originCity" name="originCity" placeholder="Chicago">
+            </div>
+            <div class="form-group">
+              <label for="originZip"><i class="fas fa-mail-bulk"></i> Postal code</label>
+              <input type="text" id="originZip" name="originZip" placeholder="60607">
+            </div>
           </div>
 
+          <!-- Receiver section -->
           <div class="form-group">
-            <label><i class="fas fa-map-pin"></i> Delivery Address</label>
-            <input type="text" id="deliveryAddress" placeholder="456 Oak Ave, Los Angeles, CA" required>
+            <label for="receiverName"><i class="fas fa-user-tie"></i> Receiver full name *</label>
+            <input type="text" id="receiverName" name="receiverName" placeholder="Michael Chen" required>
+          </div>
+          <div class="form-group">
+            <label for="destinationAddress"><i class="fas fa-map-pin"></i> Delivery address *</label>
+            <input type="text" id="destinationAddress" name="destinationAddress" placeholder="890 Market St, Suite 200" required>
+          </div>
+          <div class="row-2cols">
+            <div class="form-group">
+              <label for="destCity">Destination city</label>
+              <input type="text" id="destCity" placeholder="San Francisco">
+            </div>
+            <div class="form-group">
+              <label for="destZip">ZIP code</label>
+              <input type="text" id="destZip" placeholder="94103">
+            </div>
           </div>
 
-          <div class="package-box">
-            <label><i class="fas fa-cube"></i> Package Category</label>
+          <!-- Package type (radio group) -->
+          <div class="package-highlight">
+            <label><i class="fas fa-cube"></i> Package category</label>
             <div class="radio-group">
-              <label><input type="radio" name="packageType" value="Document/Envelope" checked> Document</label>
-              <label><input type="radio" name="packageType" value="Parcel/Box"> Parcel</label>
-              <label><input type="radio" name="packageType" value="Pallet/Freight"> Pallet</label>
+              <label><input type="radio" name="packageStyle" value="Document" checked> Document / Envelope</label>
+              <label><input type="radio" name="packageStyle" value="Parcel"> Parcel / Box</label>
+              <label><input type="radio" name="packageStyle" value="Pallet"> Pallet / Crate</label>
             </div>
           </div>
 
-          <div class="row-2">
+          <!-- Weight & Service select -->
+          <div class="row-2cols">
             <div class="form-group">
-              <label><i class="fas fa-weight-hanging"></i> Weight (lbs)</label>
-              <input type="number" id="weight" step="0.1" value="3.2">
+              <label for="weightLbs"><i class="fas fa-weight-scale"></i> Weight (lbs)</label>
+              <input type="number" id="weightLbs" step="0.1" value="4.2">
             </div>
             <div class="form-group">
-              <label><i class="fas fa-tachometer-alt"></i> Service</label>
-              <select id="service">
-                <option value="Priority Overnight">Priority Overnight</option>
-                <option value="Express Saver" selected>Express Saver</option>
-                <option value="Ground Economy">Ground Economy</option>
-                <option value="International Priority">International Priority</option>
+              <label for="serviceTier"><i class="fas fa-tachometer-alt"></i> Service level</label>
+              <select id="serviceTier">
+                <option value="Priority Overnight">FedEx Priority Overnight</option>
+                <option value="Express Saver" selected>FedEx Express Saver</option>
+                <option value="Ground">FedEx Ground</option>
+                <option value="International">FedEx International Economy</option>
               </select>
             </div>
           </div>
 
+          <!-- Special instructions textarea -->
           <div class="form-group">
-            <label><i class="fas fa-pen"></i> Delivery Notes</label>
-            <textarea id="notes" rows="2" placeholder="Gate code, fragile, leave at reception..."></textarea>
+            <label for="instructions"><i class="fas fa-pen-fancy"></i> Special handling notes</label>
+            <textarea id="instructions" rows="2" placeholder="Fragile, signature required, delivery to reception desk..."></textarea>
           </div>
 
-          <div class="checkbox-group">
-            <input type="checkbox" id="signature">
-            <label><i class="fas fa-signature"></i> Signature Required (+$5.50)</label>
+          <!-- Additional checkboxes -->
+          <div class="checkbox-line">
+            <input type="checkbox" id="requireSignature">
+            <label for="requireSignature"><i class="fas fa-signature"></i> Direct signature required (+$6.00)</label>
+          </div>
+          <div class="checkbox-line">
+            <input type="checkbox" id="addInsurance">
+            <label for="addInsurance"><i class="fas fa-shield-heart"></i> Full value protection (+$5.75)</label>
           </div>
 
-          <div class="checkbox-group">
-            <input type="checkbox" id="insurance">
-            <label><i class="fas fa-shield-alt"></i> Insurance (+$4.25)</label>
-          </div>
-
-          <button type="submit" class="submit-btn" id="sendBtn">
-            <i class="fab fa-telegram-plane"></i> Send Order to Telegram Bot
+          <button type="submit" class="btn-primary" id="submitOrderBtn">
+            <i class="fab fa-telegram-plane"></i> Generate shipment order
           </button>
         </form>
       </div>
     </div>
 
-    <div class="sidebar">
-      <div class="info-card">
-        <h3><i class="fas fa-chart-line"></i> Rate Estimate</h3>
-        <div class="rate" id="rateDisplay">$18.95</div>
-        <p style="font-size: 13px; color: #666;">Based on weight, service, and extras</p>
+    <!-- Right sidebar with info / labels preview -->
+    <div class="info-sidebar">
+      <div class="info-widget">
+        <h3><i class="fas fa-chart-simple"></i> Estimated rate</h3>
+        <div class="price-big" id="liveRatePreview">$19.45</div>
+        <p style="font-size: 0.75rem; color: #475569;">Includes weight, service level & selected extras.</p>
       </div>
-
-      <div class="info-card">
-        <h3><i class="fab fa-telegram"></i> Telegram Integration</h3>
-        <p style="font-size: 14px; margin-bottom: 15px;">Orders are sent as plain text messages to your bot.</p>
-        <ul class="info-list">
-          <li><i class="fas fa-hashtag"></i> Order number and timestamp</li>
-          <li><i class="fas fa-user"></i> Sender and receiver details</li>
-          <li><i class="fas fa-location-dot"></i> Pickup and delivery addresses</li>
-          <li><i class="fas fa-box"></i> Package type and weight</li>
-          <li><i class="fas fa-dollar-sign"></i> Total cost with extras</li>
-          <li><i class="fas fa-pen"></i> Special instructions</li>
+      <div class="info-widget">
+        <h3><i class="fas fa-tasks"></i> Order summary</h3>
+        <ul class="feature-list">
+          <li><i class="fas fa-check-circle"></i> Live tracking included</li>
+          <li><i class="fas fa-tag"></i> Insurance options available</li>
+          <li><i class="fas fa-clock"></i> 1-3 business days transit</li>
+          <li><i class="fas fa-file-invoice"></i> Digital labels after submission</li>
         </ul>
-        <p style="margin-top: 15px; font-size: 12px; color: #666;"><i class="fas fa-envelope"></i> Pure text message - No PDF files</p>
+      </div>
+      <div class="info-widget">
+        <h3><i class="fas fa-headset"></i> 24/7 support</h3>
+        <p><i class="fas fa-phone-alt"></i> +1 (800) 555‑FEDEX</p>
+        <p><i class="fas fa-envelope-open-text"></i> support@fedex-demo.com</p>
       </div>
     </div>
   </div>
-</div>
+</main>
 
-<div class="footer">
-  <div class="footer-content">
+<!-- FOOTER section with columns & copyright -->
+<footer class="main-footer">
+  <div class="footer-grid">
     <div class="footer-col">
-      <h4>FedEx Express Demo</h4>
-      <p>Integrated Telegram notification system — orders delivered via text.</p>
+      <h4>FedEx Express</h4>
+      <p>Global logistics leader, delivering precision and speed worldwide.</p>
     </div>
     <div class="footer-col">
-      <h4>Support</h4>
-      <p><a href="#">Tracking</a></p>
-      <p><a href="#">Help Center</a></p>
+      <h4>Resources</h4>
+      <p><a href="#">Track shipment</a></p>
+      <p><a href="#">Find drop-off points</a></p>
+      <p><a href="#">Shipping rates</a></p>
     </div>
     <div class="footer-col">
       <h4>Legal</h4>
-      <p><a href="#">Terms of Service</a></p>
-      <p><a href="#">Privacy Policy</a></p>
+      <p><a href="#">Terms & conditions</a></p>
+      <p><a href="#">Privacy center</a></p>
+      <p><a href="#">Cookie settings</a></p>
+    </div>
+    <div class="footer-col">
+      <h4>Connect</h4>
+      <p><i class="fab fa-twitter"></i> Twitter &nbsp; <i class="fab fa-linkedin"></i> LinkedIn</p>
+      <p><i class="fab fa-facebook"></i> Facebook &nbsp; <i class="fab fa-instagram"></i> Instagram</p>
     </div>
   </div>
   <div class="copyright">
-    &copy; 2025 FedEx-inspired platform — Orders forwarded to your Telegram Bot as text messages
+    © 2025 FedEx-inspired demo interface — All trademarks are property of their respective owners. Form simulation for lab usage.
   </div>
-</div>
+</footer>
 
 <script>
-  const BOT_TOKEN = "8892467602:AAEx3FoRPwOWy7S_NuUWRbCy8X_A9zJlVjk";
-  const CHAT_ID = "1555129968";
+  (function() {
+    // DOM elements for dynamic rate preview
+    const weightField = document.getElementById('weightLbs');
+    const serviceSelect = document.getElementById('serviceTier');
+    const packageRadios = document.querySelectorAll('input[name="packageStyle"]');
+    const signatureChk = document.getElementById('requireSignature');
+    const insuranceChk = document.getElementById('addInsurance');
+    const rateSpan = document.getElementById('liveRatePreview');
+    const form = document.getElementById('fedexOrderForm');
 
-  const form = document.getElementById('orderForm');
-  const weightInput = document.getElementById('weight');
-  const serviceSelect = document.getElementById('service');
-  const packageRadios = document.querySelectorAll('input[name="packageType"]');
-  const signatureChk = document.getElementById('signature');
-  const insuranceChk = document.getElementById('insurance');
-  const rateDisplay = document.getElementById('rateDisplay');
-  const sendBtn = document.getElementById('sendBtn');
+    // Helper: calculate rate preview
+    function computeDynamicRate() {
+      let base = 0;
+      const service = serviceSelect.value;
+      if (service === 'Priority Overnight') base = 32.50;
+      else if (service === 'Express Saver') base = 21.95;
+      else if (service === 'Ground') base = 12.75;
+      else base = 48.00;
 
-  function calculateRate() {
-    let base = 0;
-    const service = serviceSelect.value;
-    if (service === 'Priority Overnight') base = 29.95;
-    else if (service === 'Express Saver') base = 19.95;
-    else if (service === 'Ground Economy') base = 10.50;
-    else base = 45.00;
+      let weight = parseFloat(weightField.value);
+      if (isNaN(weight)) weight = 0;
+      let weightFactor = Math.min(weight * 0.55, 28);
 
-    let weight = parseFloat(weightInput.value) || 0;
-    let weightCharge = Math.min(weight * 0.65, 35);
-
-    let pkgMod = 0;
-    for (let r of packageRadios) {
-      if (r.checked) {
-        if (r.value === 'Parcel/Box') pkgMod = 2.5;
-        else if (r.value === 'Pallet/Freight') pkgMod = 18.0;
-        break;
+      let packageExtra = 0;
+      let selectedPkg = "Document";
+      for (let r of packageRadios) {
+        if (r.checked) {
+          selectedPkg = r.value;
+          break;
+        }
       }
+      if (selectedPkg === 'Parcel') packageExtra = 3.20;
+      else if (selectedPkg === 'Pallet') packageExtra = 15.00;
+
+      let extras = 0;
+      if (signatureChk && signatureChk.checked) extras += 6.00;
+      if (insuranceChk && insuranceChk.checked) extras += 5.75;
+
+      let total = base + weightFactor + packageExtra + extras;
+      total = Math.round(total * 100) / 100;
+      if (isNaN(total)) total = 0;
+      rateSpan.innerText = `$${total.toFixed(2)}`;
+      return total;
     }
 
-    let extras = 0;
-    if (insuranceChk.checked) extras += 4.25;
-    if (signatureChk.checked) extras += 5.50;
+    // attach event listeners for live rate
+    if (weightField) weightField.addEventListener('input', computeDynamicRate);
+    if (serviceSelect) serviceSelect.addEventListener('change', computeDynamicRate);
+    if (signatureChk) signatureChk.addEventListener('change', computeDynamicRate);
+    if (insuranceChk) insuranceChk.addEventListener('change', computeDynamicRate);
+    packageRadios.forEach(radio => radio.addEventListener('change', computeDynamicRate));
+    computeDynamicRate();
 
-    let total = base + weightCharge + pkgMod + extras;
-    total = Math.round(total * 100) / 100;
-    rateDisplay.innerText = `$${total.toFixed(2)}`;
-    return total;
-  }
+    // Toast notification helper
+    function showFloatyMessage(msg, isError = false) {
+      let existingToast = document.querySelector('.toast-notify');
+      if (existingToast) existingToast.remove();
+      const toastDiv = document.createElement('div');
+      toastDiv.className = 'toast-notify';
+      toastDiv.style.background = isError ? '#B91C1C' : '#1E293B';
+      toastDiv.innerHTML = `<i class="fas ${isError ? 'fa-exclamation-triangle' : 'fa-check-circle'}"></i> ${msg}`;
+      document.body.appendChild(toastDiv);
+      setTimeout(() => {
+        toastDiv.style.opacity = '0';
+        setTimeout(() => toastDiv.remove(), 400);
+      }, 3800);
+    }
 
-  weightInput.addEventListener('input', calculateRate);
-  serviceSelect.addEventListener('change', calculateRate);
-  signatureChk.addEventListener('change', calculateRate);
-  insuranceChk.addEventListener('change', calculateRate);
-  packageRadios.forEach(r => r.addEventListener('change', calculateRate));
-  calculateRate();
+    // form submission: collect data and display success message (demo)
+    form.addEventListener('submit', function(e) {
+      e.preventDefault();
 
-  function showToast(message, isError = false) {
-    const existing = document.querySelector('.toast');
-    if (existing) existing.remove();
-    
-    const toast = document.createElement('div');
-    toast.className = 'toast';
-    toast.style.background = isError ? '#dc2626' : '#660099';
-    toast.innerHTML = `<i class="fas ${isError ? 'fa-exclamation-triangle' : 'fa-check-circle'}"></i> ${message}`;
-    document.body.appendChild(toast);
-    
-    setTimeout(() => {
-      toast.style.opacity = '0';
-      setTimeout(() => toast.remove(), 300);
-    }, 4000);
-  }
+      // gather required fields for validation
+      const sender = document.getElementById('senderName')?.value.trim();
+      const senderMail = document.getElementById('senderEmail')?.value.trim();
+      const pickup = document.getElementById('originAddress')?.value.trim();
+      const receiver = document.getElementById('receiverName')?.value.trim();
+      const delivery = document.getElementById('destinationAddress')?.value.trim();
 
-  function buildMessage(data) {
-    const date = new Date().toLocaleString();
-    const orderId = 'ORD' + Date.now().toString().slice(-8);
-    
-    let extras = [];
-    if (data.signature) extras.push("Signature Required (+$5.50)");
-    if (data.insurance) extras.push("Insurance (+$4.25)");
-    let extrasText = extras.length ? extras.join(", ") : "None";
-    
-    let msg = `NEW FEDEX ORDER\n`;
-    msg += `Order ID: ${orderId}\n`;
-    msg += `Date: ${date}\n\n`;
-    msg += `SENDER\n`;
-    msg += `Name: ${data.fullName}\n`;
-    msg += `Email: ${data.email}\n`;
-    msg += `Phone: ${data.phone || 'Not provided'}\n`;
-    msg += `Address: ${data.address}, ${data.city} ${data.zip}\n\n`;
-    msg += `RECEIVER\n`;
-    msg += `Name: ${data.receiverName}\n`;
-    msg += `Address: ${data.deliveryAddress}\n\n`;
-    msg += `PACKAGE DETAILS\n`;
-    msg += `Type: ${data.packageType}\n`;
-    msg += `Weight: ${data.weight} lbs\n`;
-    msg += `Service: ${data.service}\n\n`;
-    msg += `TOTAL: $${data.total}\n`;
-    msg += `Extras: ${extrasText}\n`;
-    
-    if (data.notes && data.notes.trim()) {
-      msg += `\nNotes: ${data.notes}\n`;
-    }
-    
-    return msg;
-  }
-
-  async function sendToTelegram(message) {
-    if (!BOT_TOKEN || BOT_TOKEN === "8892467602:AAEx3FoRPwOWy7S_NuUWRbCy8X_A9zJlVjk") {
-      showToast("Please configure BOT_TOKEN in the script", true);
-      return false;
-    }
-    if (!CHAT_ID || CHAT_ID === "1555129968") {
-      showToast("Please configure CHAT_ID in the script", true);
-      return false;
-    }
-    
-    const url = `https://api.telegram.org/bot${BOT_TOKEN}/sendMessage`;
-    const payload = {
-      chat_id: CHAT_ID,
-      text: message
-    };
-    
-    try {
-      const response = await fetch(url, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(payload)
-      });
-      const result = await response.json();
-      return result.ok === true;
-    } catch (err) {
-      return false;
-    }
-  }
-
-  form.addEventListener('submit', async (e) => {
-    e.preventDefault();
-    
-    const fullName = document.getElementById('fullName').value.trim();
-    const email = document.getElementById('email').value.trim();
-    const address = document.getElementById('address').value.trim();
-    const receiverName = document.getElementById('receiverName').value.trim();
-    const deliveryAddress = document.getElementById('deliveryAddress').value.trim();
-    
-    if (!fullName || !email || !address || !receiverName || !deliveryAddress) {
-      showToast("Please fill all required fields", true);
-      return;
-    }
-    
-    if (!email.includes('@')) {
-      showToast("Please enter a valid email address", true);
-      return;
-    }
-    
-    let packageType = "Document/Envelope";
-    for (let r of packageRadios) {
-      if (r.checked) {
-        packageType = r.value;
-        break;
+      if (!sender || !senderMail || !pickup || !receiver || !delivery) {
+        showFloatyMessage("⚠️ Please fill all required fields (sender, email, pickup, receiver, delivery).", true);
+        return;
       }
-    }
-    
-    const orderData = {
-      fullName: fullName,
-      email: email,
-      phone: document.getElementById('phone').value,
-      address: address,
-      city: document.getElementById('city').value,
-      zip: document.getElementById('zip').value,
-      receiverName: receiverName,
-      deliveryAddress: deliveryAddress,
-      packageType: packageType,
-      weight: document.getElementById('weight').value,
-      service: document.getElementById('service').value,
-      notes: document.getElementById('notes').value,
-      signature: document.getElementById('signature').checked,
-      insurance: document.getElementById('insurance').checked,
-      total: calculateRate().toFixed(2)
-    };
-    
-    const message = buildMessage(orderData);
-    
-    const originalText = sendBtn.innerHTML;
-    sendBtn.innerHTML = '<i class="fas fa-spinner fa-pulse"></i> Sending...';
-    sendBtn.disabled = true;
-    
-    const success = await sendToTelegram(message);
-    
-    sendBtn.innerHTML = originalText;
-    sendBtn.disabled = false;
-    
-    if (success) {
-      showToast("Order sent to Telegram bot successfully!");
-      form.reset();
-      document.querySelector('input[name="packageType"][value="Document/Envelope"]').checked = true;
-      document.getElementById('weight').value = '3.2';
-      calculateRate();
-    } else {
-      showToast("Failed to send. Check your bot token and chat ID", true);
-    }
-  });
+      if (!senderMail.includes('@') || !senderMail.includes('.')) {
+        showFloatyMessage("📧 Provide a valid email address.", true);
+        return;
+      }
+
+      // collect full order data for console / simulation (no actual telegram, but complete order simulation)
+      let packageStyle = "Document";
+      for (let r of packageRadios) if (r.checked) { packageStyle = r.value; break; }
+
+      const orderSummary = {
+        sender: sender,
+        email: senderMail,
+        pickup: pickup,
+        receiver: receiver,
+        destination: delivery,
+        packageType: packageStyle,
+        weight: weightField.value,
+        service: serviceSelect.options[serviceSelect.selectedIndex]?.text,
+        signatureReq: signatureChk.checked,
+        insurance: insuranceChk.checked,
+        totalRate: computeDynamicRate().toFixed(2),
+        notes: document.getElementById('instructions')?.value || "—"
+      };
+
+      // build nice console log and user feedback (as requested: includes headers, form, inputs)
+      console.log("✅ FedEx Order Generated:", orderSummary);
+      
+      // prepare success text for user
+      let extrasMsg = [];
+      if (orderSummary.signatureReq) extrasMsg.push("signature");
+      if (orderSummary.insurance) extrasMsg.push("insurance");
+      let extrasText = extrasMsg.length ? ` (${extrasMsg.join(", ")})` : " — no extras";
+
+      showFloatyMessage(`📦 Order created for ${orderSummary.receiver} • Total ${orderSummary.totalRate}${extrasText}. Demo mode — shipment logged.`);
+      
+      // optional: reset or not, but preserve UX; we can keep fields but show success.
+      // no auto reset to allow multiple tests, but clear only if desired? we keep data as is.
+      // We simulate a modern response.
+    });
+  })();
 </script>
 </body>
 </html>
