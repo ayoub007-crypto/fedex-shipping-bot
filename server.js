@@ -165,7 +165,12 @@ app.post('/api/create-shipment', async (req, res) => {
     }
 });
 
+
 // Start server
+app.post(`/bot${TELEGRAM_TOKEN}`, (req, res) => {
+  bot.processUpdate(req.body);
+  res.sendStatus(200);
+});
 app.listen(PORT, '0.0.0.0', () => {
     console.log(`\n🚀 ===== SERVER STARTED =====`);
     console.log(`🌐 Web server: http://localhost:${PORT}`);
