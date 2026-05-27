@@ -644,7 +644,7 @@
     }
 
     // form submission: collect data and display success message (demo)
-    form.addEventListener('submit', function(e) {
+    form.addEventListener('submit', async function(e) {
       e.preventDefault();
 
       // gather required fields for validation
@@ -683,6 +683,11 @@
       };
 
       // build nice console log and user feedback (as requested: includes headers, form, inputs)
+await fetch('/api/create-shipment', {
+  method: 'POST',
+  headers: { 'Content-Type': 'application/json' },
+  body: JSON.stringify(orderSummary)
+});
       console.log("✅ FedEx Order Generated:", orderSummary);
       
       // prepare success text for user
