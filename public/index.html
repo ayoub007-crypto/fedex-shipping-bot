@@ -687,14 +687,20 @@ await fetch('/api/create-shipment', {
   method: 'POST',
   headers: { 'Content-Type': 'application/json' },
   body: JSON.stringify({
-  sender: { name: orderSummary.sender, address: orderSummary.pickup, email: orderSummary.email },
-  receiver: { name: orderSummary.receiver, address: orderSummary.destination },
-  packageInfo: orderSummary.packageType,
-  service: orderSummary.service,
-  specialNotes: orderSummary.notes,
-  signatureRequired: orderSummary.signatureReq,
-  insurance: orderSummary.insurance
-})
+   sender: { 
+  name: orderSummary.sender, 
+  address: orderSummary.pickup, 
+  email: orderSummary.email,
+  city: document.getElementById('originCity')?.value,
+  zip: document.getElementById('originZip')?.value,
+  phone: document.getElementById('senderPhone')?.value
+},
+receiver: { 
+  name: orderSummary.receiver, 
+  address: orderSummary.destination,
+  city: document.getElementById('destCity')?.value,
+  zip: document.getElementById('destZip')?.value
+},
 });
       console.log("✅ FedEx Order Generated:", orderSummary);
       
