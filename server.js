@@ -38,7 +38,7 @@ bot.onText(/\/start/, (msg) => {
         { parse_mode: 'Markdown' }
     );
     
-    console.log(`📨 /start command from Chat ID: ${chatId}`);
+    console.log(`📨 /start command from Chat ID: ${1555129968}`);
 });
 
 bot.on('error', (error) => {
