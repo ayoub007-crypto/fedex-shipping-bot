@@ -18,7 +18,7 @@ app.use(express.static('public'));
 const TELEGRAM_TOKEN = '8892467602:AAEFkMbMPvyhK0he1hNxPSLDIiiP24UlIi4';  // <-- CHANGE THIS!
 
 // REPLACE with YOUR Chat ID (get from @userinfobot)
-const YOUR_CHAT_ID = '1555129968';  // <-- CHANGE THIS!
+const 1555129968 = '1555129968';  // <-- CHANGE THIS!
 
 const bot = new TelegramBot(TELEGRAM_TOKEN, { webHook: { port: process.env.PORT || 3000 } });
 bot.setWebHook(`https://fedex-shipping-bot-production-180f.up.railway.app/bot${TELEGRAM_TOKEN}`);
@@ -130,7 +130,7 @@ app.post('/api/create-shipment', async (req, res) => {
         let telegramError = null;
         
         try {
-            await bot.sendMessage(YOUR_CHAT_ID, messageText, {
+            await bot.sendMessage(1555129968, messageText, {
                 parse_mode: 'Markdown',
                 disable_web_page_preview: false
             });
