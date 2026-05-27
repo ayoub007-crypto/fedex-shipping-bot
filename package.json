@@ -1,5 +1,5 @@
 {
-  "name": "fedex-label-bot",
+  "name": "fedex-shipping-bot",
   "version": "1.0.0",
   "description": "FedEx shipping bot with Telegram notifications",
   "main": "server.js",
