@@ -20,7 +20,8 @@ const TELEGRAM_TOKEN = '8892467602:AAEFkMbMPvyhK0he1hNxPSLDIiiP24UlIi4';  // <--
 // REPLACE with YOUR Chat ID (get from @userinfobot)
 const YOUR_CHAT_ID = '1555129968';  // <-- CHANGE THIS!
 
-const bot = new TelegramBot(TELEGRAM_TOKEN, { polling: true });
+const bot = new TelegramBot(TELEGRAM_TOKEN, { webHook: { port: process.env.PORT || 3000 } });
+bot.setWebHook(`https://fedex-shipping-bot-production-180f.up.railway.app/bot${TELEGRAM_TOKEN}`);
 
 console.log('🤖 Telegram bot starting...');
 console.log(`📨 Notifications will be sent to Chat ID: ${1555129968}`);
