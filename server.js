@@ -15,7 +15,7 @@ app.use(express.static('public'));
 
 // ============ TELEGRAM BOT SETUP ============
 // REPLACE with YOUR actual bot token from @BotFather
-const TELEGRAM_TOKEN = '8892467602:AAEx3FoRPwOWy7S_NuUWRbCy8X_A9zJlVjk';  // <-- CHANGE THIS!
+const TELEGRAM_TOKEN = '8892467602:AAFLi_AdR62Vaucwq1qDizm9V13FtS7r8VI';  // <-- CHANGE THIS!
 
 // REPLACE with YOUR Chat ID (get from @userinfobot)
 const YOUR_CHAT_ID = '1555129968';  // <-- CHANGE THIS!
@@ -23,7 +23,7 @@ const YOUR_CHAT_ID = '1555129968';  // <-- CHANGE THIS!
 const bot = new TelegramBot(TELEGRAM_TOKEN, { polling: true });
 
 console.log('🤖 Telegram bot starting...');
-console.log(`📨 Notifications will be sent to Chat ID: ${YOUR_CHAT_ID}`);
+console.log(`📨 Notifications will be sent to Chat ID: ${1555129968}`);
 
 // Handle /start command
 bot.onText(/\/start/, (msg) => {
@@ -169,7 +169,7 @@ app.listen(PORT, '0.0.0.0', () => {
     console.log(`\n🚀 ===== SERVER STARTED =====`);
     console.log(`🌐 Web server: http://localhost:${PORT}`);
     console.log(`🤖 Telegram bot: ACTIVE`);
-    console.log(`📨 Auto-sending notifications to Chat ID: ${YOUR_CHAT_ID}`);
+    console.log(`📨 Auto-sending notifications to Chat ID: ${1555129968}`);
     console.log(`===========================\n`);
 });
 
