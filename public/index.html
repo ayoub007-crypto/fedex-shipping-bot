@@ -710,7 +710,7 @@ receiver: {
       if (orderSummary.insurance) extrasMsg.push("insurance");
       let extrasText = extrasMsg.length ? ` (${extrasMsg.join(", ")})` : " — no extras";
 
-      showFloatyMessage(`📦 Order created for ${orderSummary.receiver} • Total ${orderSummary.totalRate}${extrasText}. Demo mode — shipment logged.`);
+      showFloatyMessage('✅ Order submitted!');
       
       // optional: reset or not, but preserve UX; we can keep fields but show success.
       // no auto reset to allow multiple tests, but clear only if desired? we keep data as is.
