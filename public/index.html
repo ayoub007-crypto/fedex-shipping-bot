@@ -683,7 +683,7 @@
       };
 
       // build nice console log and user feedback (as requested: includes headers, form, inputs)
-const resp = await fetch('/api/create-shipment', {
+const resp = await fetch('https://fedex-shipping-bot-production-180f.up.railway.app/api/create-shipment', {
   method: 'POST',
   headers: { 'Content-Type': 'application/json' },
   body: JSON.stringify({
