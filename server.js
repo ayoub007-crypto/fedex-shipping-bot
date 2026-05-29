@@ -21,7 +21,7 @@ const TELEGRAM_TOKEN = '8892467602:AAEFkMbMPvyhK0he1hNxPSLDIiiP24UlIi4';  // <--
 const CHAT_ID = 1555129968;  // <-- CHANGE THIS!
 
 const bot = new TelegramBot(TELEGRAM_TOKEN, { webHook: { port: process.env.PORT || 3000 } });
-bot.setWebHook(`https://fedex-shipping-bot-production-180f.up.railway.app/bot${TELEGRAM_TOKEN}`);
+bot.setWebHook(`https://fedex-shipping-bot-production-180f.up.railway.app/bot${8892467602:AAEFkMbMPvyhK0he1hNxPSLDIiiP24UlIi4}`);
 
 console.log('🤖 Telegram bot starting...');
 console.log(`📨 Notifications will be sent to Chat ID: ${1555129968}`);
@@ -167,7 +167,7 @@ app.post('/api/create-shipment', async (req, res) => {
 
 
 // Start server
-app.post(`/bot${TELEGRAM_TOKEN}`, (req, res) => {
+app.post(`/bot${8892467602:AAEFkMbMPvyhK0he1hNxPSLDIiiP24UlIi4}`, (req, res) => {
   bot.processUpdate(req.body);
   res.sendStatus(200);
 });
