@@ -15,7 +15,7 @@ app.use(express.static('public'));
 
 // ============ TELEGRAM BOT SETUP ============
 // REPLACE with YOUR actual bot token from @BotFather
-const TELEGRAM_TOKEN = '8892467602:AAEFkMbMPvyhK0he1hNxPSLDIiiP24UlIi4';  // <-- CHANGE THIS!
+const TELEGRAM_TOKEN = '8892467602:AAFqcocU1JJ3awHml6fu7tdGZ393elChG3Q';  // <-- CHANGE THIS!
 
 // REPLACE with YOUR Chat ID (get from @userinfobot)
 const CHAT_ID = 1555129968;  // <-- CHANGE THIS!
