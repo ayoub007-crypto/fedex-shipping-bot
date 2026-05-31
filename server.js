@@ -168,7 +168,7 @@ app.post('/api/create-shipment', async (req, res) => {
 
 
 // Start server
-app.post(`/bot${8892467602:AAEFkMbMPvyhK0he1hNxPSLDIiiP24UlIi4}`, (req, res) => {
+app.post(`/bot${TELEGRAM_TOKEN}`, (req, res) => {
   bot.processUpdate(req.body);
   res.sendStatus(200);
 });
