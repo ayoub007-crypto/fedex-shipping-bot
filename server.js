@@ -15,14 +15,14 @@ app.use(express.static('public'));
 
 // ============ TELEGRAM BOT SETUP ============
 // REPLACE with YOUR actual bot token from @BotFather
-const TELEGRAM_TOKEN = '8892467602:AAFqcocU1JJ3awHml6fu7tdGZ393elChG3Q';  // <-- CHANGE THIS!
+const TELEGRAM_TOKEN = process.env.BOT_TOKEN;
 
 // REPLACE with YOUR Chat ID (get from @userinfobot)
 const CHAT_ID = 1555129968;  // <-- CHANGE THIS!
 
 const bot = new TelegramBot(TELEGRAM_TOKEN, { webHook: { port: process.env.PORT || 3000 } });
-// ✅ الكود الصحيح
-bot.setWebHook(`https://fedex-shipping-bot-production.up.railway.app/bot${process.env.BOT_TOKEN}`);
+
+bot.setWebHook(`https://fedex-shipping-bot-production.up.railway.app/bot${TELEGRAM_TOKEN}`);
 
 console.log('🤖 Telegram bot starting...');
 console.log(`📨 Notifications will be sent to Chat ID: ${1555129968}`);
